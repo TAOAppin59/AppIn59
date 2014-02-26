@@ -5,7 +5,10 @@
   "dependencies": {
     "angular": "~1.2",
     "angular-resource": "~1.2",
-    "angular-route": "~1.2"
+    "angular-route": "~1.2",
+    "moment": "*",
+    "underscore": "*",
+    "angular-google-maps": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.2",
