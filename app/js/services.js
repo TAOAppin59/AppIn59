@@ -33,11 +33,11 @@ angular.module('myApp.services', ['ngResource'])
             }
         }
     }])
-    .factory('restaurantFinder', ['proxyService', '$q', function(proxyService, $q){
+    .factory('restaurantFinder', ['$q', 'proxyService', function($q, proxyService) {
+        var inspectionUrl = 'http://api.civicapps.org/restaurant-inspections/near/';
         return {
-            inspectionUrl: 'http://api.civicapps.org/restaurant-inspections/near/',
             findNear: function(location) {
-                var url = this.inspectionUrl;
+                var url = inspectionUrl;
                 var deferred = $q.defer();
                 url += (location.longitude + ',' + location.latitude);
                 url += ('?since=' + moment().subtract(6, 'months').format('YYYY-MM-DD'));
@@ -65,6 +65,5 @@ angular.module('myApp.services', ['ngResource'])
 
                 return deferred.promise;
             }
-        }
-
+        };
     }]);
