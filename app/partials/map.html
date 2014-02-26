@@ -2,7 +2,12 @@
     <google-map center="map.center" zoom="map.zoom"  draggable="true"></google-map>
     <google-map center="map.center" zoom="map.zoom">
         <marker ng-repeat="marker in map.markers" coords="marker.location">
-            <window show="marker.showWindow">Hello World</window>
+            <window show="marker.showWindow" icon="marker.score | markerIcon">
+                <div class="marker-window {{marker.score | markerClass}}">
+                    <p>{{marker.name}} ({{marker.score}})</p>
+                    <p>{{marker.address.street}}</p>
+                </div>
+            </window>
         </marker>
     </google-map>
 </div>
