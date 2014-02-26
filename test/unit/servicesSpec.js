@@ -31,10 +31,9 @@ describe('service', function () {
         }));
     });
 
-    describe('restaurantFinder', function() {
-        it('should have a property that defines teh JsonP Url',inject(function(restaurantFinder) {
-
-            expect(restaurantFinder.inspectionUrl).toEqual( 'http://api.civicapps.org/restaurant-inspections/near/');
+    describe('restaurantHealth', function() {
+        it('should have a property that defines the restaurant health api url', inject(function(restaurantHealth){
+            expect(restaurantHealth.restaurantUrl).toEqual('http://api.civicapps.org/restaurant-inspections/inspection/');
         }));
     });
 });
