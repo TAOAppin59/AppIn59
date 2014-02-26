@@ -9,6 +9,15 @@ angular.module('myApp.controllers', ['myApp.services']).
                 latitude: 122,
                 longitude: -42
             },
-            zoom: 16
-        }
+            zoom: 16,
+            init: function() {
+                $scope.map.centerMap();
+            },
+            centerMap: function() {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    $scope.map.center = position.coords;
+                });
+            }
+        };
+        $scope.map.init();
 	}]);
