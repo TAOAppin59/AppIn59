@@ -18,4 +18,16 @@ describe('service', function () {
             expect(resource).toBe($resource);
         }));
     });
+
+    describe('proxyService', function() {
+        it('should have a property that defines teh JsonP Url',inject(function(proxyService) {
+
+            expect(proxyService.url).toEqual('http://jsonp.jit.su/?url=');
+        }));
+
+        it('should return a object',inject(function(proxyService) {
+
+            expect(typeof proxyService.get()).toEqual('object');
+        }));
+    });
 });
