@@ -1,8 +1,8 @@
 <div>
     <google-map center="map.center" zoom="map.zoom"  draggable="true"></google-map>
     <google-map center="map.center" zoom="map.zoom">
-        <marker ng-repeat="marker in map.markers" coords="marker.location">
-            <window show="marker.showWindow" icon="marker.score | markerIcon">
+        <marker ng-repeat="marker in map.markers" coords="marker.location" icon="marker.score | markerIcon">
+            <window show="marker.showWindow">
                 <div class="marker-window {{marker.score | markerClass}}">
                     <p>{{marker.name}} ({{marker.score}})</p>
                     <p>{{marker.address.street}}</p>
