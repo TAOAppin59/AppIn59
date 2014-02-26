@@ -18,7 +18,7 @@ angular.module('myApp.services', ['ngResource'])
         return {
             url: 'http://jsonp.jit.su/?url=',
             get:function(apiUrl){
-                var resourceProxy = $resource(this.url + apiUrl);
+                var resourceProxy = $resource(this.url + apiUrl, {}, {});
                 var deferral = $q.defer();
 
                 resourceProxy.get({},
