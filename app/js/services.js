@@ -51,7 +51,7 @@ angular.module('myApp.services', ['ngResource'])
                 var deferred = $q.defer();
                 url += (location.longitude + ',' + location.latitude);
                 url += ('?since=' + moment().subtract(6, 'months').format('YYYY-MM-DD'));
-                url += ('&count=30&distance=1');
+                url += ('&count=30&distance=.5');
                 var proxyPromise = proxyService.get(encodeURIComponent(url));
 
                 proxyPromise.then(
