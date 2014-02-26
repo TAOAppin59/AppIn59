@@ -1,7 +1,33 @@
 @import "../app/lib/foundation/scss/foundation.scss";
 
-.angular-google-map-container {
-  height: 400px;
+@import "../app/lib/foundation/scss/foundation.scss";
+
+/* mixins */
+@mixin foundation-google-maps-fix() {
+  img {
+    max-width: none;
+    height: auto
+  }
+}
+
+@mixin angular-map-container-style-with-height($height) {
+  .angular-google-map-container {
+    height: $height!important;
+    margin: 6px;
+
+    @include foundation-google-maps-fix();
+  }
+}
+
+/* app css stylesheet */
+body {
+  background-color: #65a7df;
+
+  @include angular-map-container-style-with-height(90vh);
+
+  .panel {
+    background-color: #65a7df;
+  }
 }
 
 .green {
@@ -22,4 +48,105 @@
   float: left;
   height: 100px;
   width: 100%;
+}
+
+/*********************************************
+    Responsive styling
+ *********************************************/
+
+/* iPhone 4 (portrait) */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+and (orientation : portrait) {
+  /*CSS Instructions */
+  body {
+    @include angular-map-container-style-with-height(468px);
+  }
+}
+
+/* iPhone 4 (landscape) */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (orientation: landscape) {
+  /*CSS Instructions */
+  body {
+    @include angular-map-container-style-with-height(308px);
+  }
+}
+
+/* iPhone 5 (portrait) */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-device-pixel-ratio: 2)
+and (device-aspect-ratio: 40/71)
+and (orientation:portrait) {
+  /*CSS Instructions */
+  body {
+    @include angular-map-container-style-with-height(496px);
+  }
+}
+
+/* iPhone 5 (landscape) */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-device-pixel-ratio: 2)
+and (device-aspect-ratio: 40/71)
+and (orientation:landscape) {
+  /*CSS Instructions */
+  body {
+    @include angular-map-container-style-with-height(248px);
+  }
+}
+
+/* Most 16:9 xHdpi Android devices with (portrait) */
+@media screen
+and (min-width:0px)
+and (device-width:360px)
+and (max-width:360px)
+and (orientation:portrait)
+and (-webkit-min-device-pixel-ratio:2)
+and (device-aspect-ratio:45/74) {
+  body {
+    @include angular-map-container-style-with-height(448px);
+  }
+}
+
+/* Most 16:9 xHdpi Android smartphones (landscape) */
+@media screen
+and (min-width:598px)
+and (device-width:598px)
+and (max-width:598px)
+and (orientation:landscape)
+and (-webkit-min-device-pixel-ratio:2)
+and (device-aspect-ratio:299/180) {
+  body {
+    @include angular-map-container-style-with-height(228px);
+  }
+}
+
+/* iPads (portrait) */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  /*CSS Instructions */
+
+}
+
+/* iPads (landscape) */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  /*CSS Instructions */
+
+}
+
+/* Samsung Nexus 10 */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width:1600px) and (orientation : portrait) {
+  /*CSS Instructions */
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-device-width:1600px) and (orientation : landscape) {
+  /*CSS Instructions */
+
 }

@@ -1,3 +1,8 @@
 <div>
     <google-map center="map.center" zoom="map.zoom"  draggable="true"></google-map>
+    <google-map center="map.center" zoom="map.zoom">
+        <marker ng-repeat="marker in map.markers" coords="marker.location">
+            <window show="marker.showWindow">Hello World</window>
+        </marker>
+    </google-map>
 </div>
