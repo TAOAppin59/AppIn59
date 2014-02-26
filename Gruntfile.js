@@ -57,6 +57,16 @@ module.exports = function (grunt) {
                         }
                     }
                 ]
+            },
+            deploy: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['**'],
+                        dest: '/var/www',
+                        cwd: 'app/'
+                    }
+                ]
             }
         },
 
@@ -115,5 +125,5 @@ module.exports = function (grunt) {
     grunt.registerTask('web', ['connect:web']);
     grunt.registerTask('watch-tests', ['karma:dev']);
     grunt.registerTask('default', ['clean', 'concurrent:dev']);
-    grunt.registerTask('ci', ['clean', 'karma:ci', 'copy:coverage']);
+    grunt.registerTask('ci', ['clean', 'karma:ci', 'copy:coverage', 'sass', 'copy:deploy']);
 };
