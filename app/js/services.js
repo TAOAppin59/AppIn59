@@ -33,7 +33,7 @@ angular.module('myApp.services', ['ngResource'])
             }
         }
     }])
-    .factory('restaurantFinder', ['proxyService', function(proxyService){
+    .factory('restaurantFinder', ['proxyService', '$q', function(proxyService, $q){
         return {
             inspectionUrl: 'http://api.civicapps.org/restaurant-inspections/near/',
             findNear: function(location) {
@@ -42,6 +42,7 @@ angular.module('myApp.services', ['ngResource'])
                 url += (location.longitude + ',' + location.latitude);
                 url += ('?since=' + moment().subtract(6, 'months').format('YYYY-MM-DD'));
                 url += ('&count=30&distance=.5');
+                var proxyPromise = proxyService.get(encodeURIComponent(url));
 
                 proxyPromise.then(
                     function (results) {
