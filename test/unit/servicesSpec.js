@@ -30,4 +30,11 @@ describe('service', function () {
             expect(typeof proxyService.get()).toEqual('object');
         }));
     });
+
+    describe('restaurantFinder', function() {
+        it('should have a property that defines teh JsonP Url',inject(function(restaurantFinder) {
+
+            expect(restaurantFinder.inspectionUrl).toEqual( 'http://api.civicapps.org/restaurant-inspections/near/');
+        }));
+    });
 });

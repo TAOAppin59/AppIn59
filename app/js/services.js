@@ -32,4 +32,38 @@ angular.module('myApp.services', ['ngResource'])
                 return deferral.promise;
             }
         }
+    }])
+    .factory('restaurantFinder', ['proxyService', function(proxyService){
+        return {
+            inspectionUrl: 'http://api.civicapps.org/restaurant-inspections/near/',
+            findNear: function(location) {
+                var url = this.inspectionUrl;
+                var deferred = $q.defer();
+                url += (location.longitude + ',' + location.latitude);
+                url += ('?since=' + moment().subtract(6, 'months').format('YYYY-MM-DD'));
+                url += ('&count=30&distance=.5');
+
+                proxyPromise.then(
+                    function (results) {
+                        var returnArray = [];
+                        angular.forEach(results.results, function(restaurant, key) {
+                            returnArray.push({
+                                name: restaurant.name,
+                                score: restaurant.score,
+                                location: {
+                                    latitude: restaurant.location.Latitude,
+                                    longitude: restaurant.location.Longitude
+                                },
+                                address: restaurant.address,
+                                inspection_id: restaurant.inspection_id
+                            })
+                        });
+                        deferred.resolve(returnArray);
+                    }
+                );
+
+                return deferred.promise;
+            }
+        }
+
     }]);
